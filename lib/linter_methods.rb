@@ -1,9 +1,13 @@
 
 
 class LinterCheck
-  def initialize(attribute)
+  def initialize(file_route)
     @error_list = []
-    @attribute = attribute
+    @file_route = file_route
+  end
+
+  def check_methods
+    single_quote
   end
 
   def single_quote(line, num)
