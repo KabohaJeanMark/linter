@@ -1,4 +1,4 @@
-
+require 'colorize'
 
 class LinterCheck
   def initialize(file_route)
@@ -12,7 +12,7 @@ class LinterCheck
 
   def single_quote(line, num)
     if line.include?("'")
-      @error_list << "Single quotes on line number #{num}"
+      @error_list.shift("Single quotes on line number #{num}".colorize(:light_red))
     end
   end
 end
