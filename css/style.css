@@ -8,14 +8,20 @@ header {
 }
 
 #landing {
-  background-color: rgb(42, 54, 54);
+  background-color: rgb(42, 54, 54);;
 }
 
 header nav {
-  color: rgb(114, 114, 231) !important;;
+  color: rgb(114, 114, 231) !important;
   z-index: higher;
 }
 
 nav h1 {
   z-index: 999;
+  border: 1rem solid red; /* Border comment */
+  margin-top: 30px;
+}
+
+footer {
+  background-color: aqua;     
 }

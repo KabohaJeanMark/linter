@@ -37,9 +37,32 @@ class LinterCheck
   end
 
   def id_selector(line, num)
-    return unless line.include?('#')
+    return unless line.include?('#') && line.include?('{')
 
     @error_list.push("Class selector preferred to id on line #{num}".colorize(:yellow))
+  end
+
+  def pixels(line, num)
+    return unless line.include?('px')
+
+    @error_list.push("Used px. Prefer fluid measurements %, vh, vw, rem or em on line #{num}".colorize(:yellow))
+  end
+
+  def commented_code(line, num)
+    @error_list.push("Comments detected. Please remove /* from line #{num}".colorize(:light_red)) if line.include?('/*')
+  end
+
+  def color_rules(line, num)
+    return unless line.include?('color') && !line.split(':')[1].include?('rgb' || '#')
+
+    @error_list.push("Used color name. Please use hex or rgb values on line #{num}".colorize(:yellow))
+  end
+
+  def space_at_line_end(line, num)
+    bare_line = line.delete("\n")
+    return unless bare_line.end_with?(' ')
+
+    @error_list.push("Empty, trailing space detected at end of line #{num}".colorize(:light_red))
   end
 
   def check_methods
@@ -53,6 +76,10 @@ class LinterCheck
       z_index(line, num)
       z_index_size(line, num)
       id_selector(line, num)
+      pixels(line, num)
+      commented_code(line, num)
+      color_rules(line, num)
+      space_at_line_end(line, num)
     end
     @error_list
   end
