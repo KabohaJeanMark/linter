@@ -49,5 +49,13 @@ describe LinterCheck do
     end
   end
 
-  describe ''
+  describe '#extra_colons' do
+    it 'checks if the extra_colons method returns an array with the error message' do
+      expect(linter_check_object.send(:extra_colons, ';;', 11)).to be_a(Array)
+    end
+    it 'checks if the error message is Extra semi colon on line in color light-red' do
+      expect(linter_check_object.send(:extra_colons, ';;',
+                                      11)).to eql(['Extra semi colon on line 11'.colorize(:light_red)])
+    end
+  end
 end
