@@ -37,7 +37,7 @@ class LinterCheck
   end
 
   def id_selector(line, num)
-    return unless line.include?('#') && !(line.include?('{'))
+    return unless line.include?('#') && !line.include?('{')
 
     @error_list.push("Class selector preferred to id on line #{num}".colorize(:yellow))
   end
@@ -45,11 +45,11 @@ class LinterCheck
   def pixels(line, num)
     return unless line.include?('px')
 
-    @error_list.push("Used px. Prefer fluid measurements %, vh, vw, rem or em on line #{num}".colorize(:yellow))
+    @error_list.push("Used px. Prefer fluid measurements on line #{num}".colorize(:yellow))
   end
 
   def commented_code(line, num)
-    @error_list.push("Comments detected. Please remove /* from line #{num}".colorize(:light_red)) if line.include?('/*')
+    @error_list.push("Comments detected. Remove /* from line #{num}".colorize(:light_red)) if line.include?('/*')
   end
 
   def color_rules(line, num)
