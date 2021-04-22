@@ -27,4 +27,14 @@ describe LinterCheck do
                                       3)).to eql(['Single quotes on line number 3'.colorize(:light_red)])
     end
   end
+
+  describe '#double_quote' do
+    it 'checks that double_quote check returns an array with error' do
+      expect(linter_check_object.send(:double_quote, '"', 7)).to be_a(Array)
+    end
+    it 'checks if the error message is double quotes on line number in color light-red' do
+      expect(linter_check_object.send(:double_quote, "'",
+                                      7)).to eql(['double quotes on line number 7'.colorize(:light_red)])
+    end
+  end
 end
