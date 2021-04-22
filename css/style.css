@@ -23,5 +23,6 @@ nav h1 {
 }
 
 footer {
-  background-color: aqua;     
+  background-color: aqua;
+  padding: 2rem;   
 }

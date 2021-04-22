@@ -37,7 +37,7 @@ class LinterCheck
   end
 
   def id_selector(line, num)
-    return unless line.include?('#') && line.include?('{')
+    return unless line.include?('#') && !(line.include?('{'))
 
     @error_list.push("Class selector preferred to id on line #{num}".colorize(:yellow))
   end

@@ -85,4 +85,13 @@ describe LinterCheck do
                                       20)).to eql(['z-index should is too big on line 20'.colorize(:yellow)])
     end
   end
+
+  describe '#pixels' do
+    it 'checks if the error message shows px used on line in light-red' do
+      expect(linter_check_object.send(:pixels, 'px',
+                                      11)).to eql(['Used px. Prefer fluid measurements %, vh, vw, rem or em on line 11'.colorize(:yellow)])
+    end
+  end
+
+
 end
