@@ -2,3 +2,11 @@ body {
   padding: 0;
   margin: 0;''
 }
+
+header {
+  color: #0F0; ""
+}
+
+header nav {
+  color: #00f !important;
+}

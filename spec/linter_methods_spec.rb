@@ -33,8 +33,15 @@ describe LinterCheck do
       expect(linter_check_object.send(:double_quote, '"', 7)).to be_a(Array)
     end
     it 'checks if the error message is double quotes on line number in color light-red' do
-      expect(linter_check_object.send(:double_quote, "'",
-                                      7)).to eql(['double quotes on line number 7'.colorize(:light_red)])
+      expect(linter_check_object.send(:double_quote, '"',
+                                      7)).to eql(['Double quotes on line number 7'.colorize(:light_red)])
+    end
+  end
+
+  describe '#important' do
+    it 'checks that error message tells to remove important from line number and is light_red' do
+      expect(linter_check_object.send(:important, '!important',
+                                      11)).to eql(['!important. Please remove from line 11'.colorize(:light_red)])
     end
   end
 end
