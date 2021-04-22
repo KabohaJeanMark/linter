@@ -22,9 +22,9 @@ describe LinterCheck do
     it 'checks if the single_quote method returns an array with the error message' do
       expect(linter_check_object.send(:single_quote, "'", 3)).to be_a(Array)
     end
-    it 'checks if the error message is Single quotes on line number in color light-red' do
+    it 'checks if the error message is Single quotes on line in color light-red' do
       expect(linter_check_object.send(:single_quote, "'",
-                                      3)).to eql(['Single quotes on line number 3'.colorize(:light_red)])
+                                      3)).to eql(['Single quotes on line 3'.colorize(:light_red)])
     end
   end
 
@@ -32,16 +32,22 @@ describe LinterCheck do
     it 'checks that double_quote check returns an array with error' do
       expect(linter_check_object.send(:double_quote, '"', 7)).to be_a(Array)
     end
-    it 'checks if the error message is double quotes on line number in color light-red' do
+    it 'checks if the error message is double quotes on line in color light-red' do
       expect(linter_check_object.send(:double_quote, '"',
-                                      7)).to eql(['Double quotes on line number 7'.colorize(:light_red)])
+                                      7)).to eql(['Double quotes on line 7'.colorize(:light_red)])
     end
   end
 
   describe '#important' do
-    it 'checks that error message tells to remove important from line number and is light_red' do
+    it 'checks that error message tells to remove important from line and is light_red' do
       expect(linter_check_object.send(:important, '!important',
                                       11)).to eql(['!important. Please remove from line 11'.colorize(:light_red)])
     end
+    it 'checks important method does not return empty' do
+      expect(linter_check_object.send(:important, '!important',
+                                      11)).not_to be false
+    end
   end
+
+  describe ''
 end

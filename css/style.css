@@ -4,9 +4,14 @@ body {
 }
 
 header {
-  color: #0F0; ""
+  color: rgb(103, 182, 103); ""
 }
 
 header nav {
-  color: #00f !important;
+  color: rgb(114, 114, 231) !important;;
+  z-index: higher;
+}
+
+#landing {
+  background-color: rgb(42, 54, 54);
 }
