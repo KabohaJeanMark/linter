@@ -12,7 +12,7 @@ if user_input == 'csslint'
   puts linter_example_b.check_methods
 end
 
-puts "Enter 'read' to view a file with no errors"
+puts "Enter 'read' to view above file with no errors"
 user_input_b = gets.chomp.downcase
 
 if user_input_b == 'read'
