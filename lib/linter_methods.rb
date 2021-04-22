@@ -62,7 +62,7 @@ class LinterCheck
     bare_line = line.delete("\n")
     return unless bare_line.end_with?(' ')
 
-    @error_list.push("Empty, trailing space detected at end of line #{num}".colorize(:light_red))
+    @error_list.push("Empty space detected at end of line #{num}".colorize(:light_red))
   end
 
   def check_methods

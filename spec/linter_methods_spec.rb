@@ -99,4 +99,11 @@ describe LinterCheck do
                                       21)).to eql(['Comments detected. Remove /* from line 21'.colorize(:light_red)])
     end
   end
+
+  describe '#space_at_line_end' do
+    it 'checks if there is trailing space at line end' do
+      expect(linter_check_object.send(:space_at_line_end, ' ',
+                                      23)).to eql(['Empty space detected at end of line 23'.colorize(:light_red)])
+    end
+  end
 end
