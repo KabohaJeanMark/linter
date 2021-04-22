@@ -1,0 +1,28 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  color: rgb(103, 182, 103);
+}
+
+.landing {
+  background-color: rgb(42, 54, 54);
+}
+
+header nav {
+  color: rgb(114, 114, 231);
+  z-index: 3;
+}
+
+nav h1 {
+  z-index: 5;
+  border: 1rem solid rgb(129, 83, 83);
+  margin-top: 30vh;
+}
+
+footer {
+  background-color: rgb(25, 109, 109);
+  padding: 2rem;
+}

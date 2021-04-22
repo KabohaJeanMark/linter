@@ -65,6 +65,8 @@ class LinterCheck
     @error_list.push("Empty space detected at end of line #{num}".colorize(:light_red))
   end
 
+  private
+
   def check_methods
     num = 0
     File.readlines(@file_route).each do |line|
@@ -81,6 +83,10 @@ class LinterCheck
       color_rules(line, num)
       space_at_line_end(line, num)
     end
-    @error_list
+    if @error_list.length.zero?
+      'All checks have passed. No code errors'.colorize(:green)
+    else
+      @error_list
+    end
   end
 end
