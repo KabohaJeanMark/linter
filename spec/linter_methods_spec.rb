@@ -18,26 +18,6 @@ describe LinterCheck do
     end
   end
 
-  describe '#single_quote' do
-    it 'checks if the single_quote method returns an array with the error message' do
-      expect(linter_check_object.send(:single_quote, "'", 3)).to be_a(Array)
-    end
-    it 'checks if the error message is Single quotes on line in color light-red' do
-      expect(linter_check_object.send(:single_quote, "'",
-                                      3)).to eql(['Single quotes on line 3'.colorize(:light_red)])
-    end
-  end
-
-  describe '#double_quote' do
-    it 'checks that double_quote check returns an array with error' do
-      expect(linter_check_object.send(:double_quote, '"', 7)).to be_a(Array)
-    end
-    it 'checks if the error message is double quotes on line in color light-red' do
-      expect(linter_check_object.send(:double_quote, '"',
-                                      7)).to eql(['Double quotes on line 7'.colorize(:light_red)])
-    end
-  end
-
   describe '#important' do
     it 'checks that error message tells to remove important from line and is light_red' do
       expect(linter_check_object.send(:important, '!important',
@@ -49,6 +29,26 @@ describe LinterCheck do
     end
   end
 
+  describe '#single_quote' do
+    it 'checks if the single_quote method returns an array with the error message' do
+      expect(linter_check_object.send(:single_quote, "'", 3)).to be_a(Array)
+    end
+    it 'checks if the error message is Single quotes on line in color light-red' do
+      expect(linter_check_object.send(:single_quote, "'",
+                                      3)).to eql(['Single quotes at end of line 3'.colorize(:light_red)])
+    end
+  end
+
+  describe '#double_quote' do
+    it 'checks that double_quote check returns an array with error' do
+      expect(linter_check_object.send(:double_quote, '"', 7)).to be_a(Array)
+    end
+    it 'checks if the error message is double quotes on line in color light-red' do
+      expect(linter_check_object.send(:double_quote, '"',
+                                      7)).to eql(['Double quotes at end of line 7'.colorize(:light_red)])
+    end
+  end
+
   describe '#extra_colons' do
     it 'checks if the extra_colons method returns an array with the error message' do
       expect(linter_check_object.send(:extra_colons, ';;', 11)).to be_a(Array)
@@ -56,6 +56,33 @@ describe LinterCheck do
     it 'checks if the error message is Extra semi colon on line in color light-red' do
       expect(linter_check_object.send(:extra_colons, ';;',
                                       11)).to eql(['Extra semi colon on line 11'.colorize(:light_red)])
+    end
+  end
+
+  describe '#z_index' do
+    it 'checks that z-index should be a number error message stored in array' do
+      expect(linter_check_object.send(:z_index, 'z-index', 12)).to be_a(Array)
+    end
+
+    it 'checks that z_index method raises argument error if only passed one argument' do
+      expect { linter_check_object.send(:z_index, 'z-index') }.to raise_error(ArgumentError)
+    end
+  end
+
+  describe '#id_selector' do
+    it 'checks that warning in color yellow adising class-selector is preferred to id selector on line' do
+      expect(linter_check_object.send(:id_selector, '#',
+                                      15)).to eql(['Class selector preferred to id on line 15'.colorize(:yellow)])
+    end
+    it 'checks that id selector when passed id does not return false' do
+      expect(linter_check_object.send(:id_selector, '#', 15)).not_to be false
+    end
+  end
+
+  describe '#z_index_size' do
+    it 'checks that warning in yellow is issued when z index value is too big' do
+      expect(linter_check_object.send(:z_index_size, 'z-index: 999',
+                                      20)).to eql(['z-index should is too big on line 20'.colorize(:yellow)])
     end
   end
 end
