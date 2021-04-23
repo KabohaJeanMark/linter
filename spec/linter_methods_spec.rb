@@ -1,4 +1,4 @@
-require 'linter_methods'
+require_relative 'lib/linter_methods'
 
 describe LinterCheck do
   let(:linter_check_object) { LinterCheck.new('css/style.css') }
