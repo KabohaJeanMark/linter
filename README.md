@@ -39,7 +39,7 @@ ruby bin/main.rb
 
 - It shows all of the linter checks being executed on a file.
 
-![linters](assets/errors-2.png)
+![linters](assets/errors-1.png)
 
 - The user is then prompted to check another file by typing in 'csslint'
 
