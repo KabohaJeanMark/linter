@@ -1,8 +1,6 @@
 require 'colorize'
 
 class LinterCheck
-  attr_reader :error_list
-
   def initialize(file_route)
     @error_list = []
     @file_route = file_route

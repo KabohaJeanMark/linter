@@ -11,11 +11,6 @@ describe LinterCheck do
         expect { LinterCheck.new('../css/style', '2ndarg') }.to raise_error(ArgumentError)
       end
     end
-    context 'when the object is created successfully' do
-      it 'contains an empty array to store error messages' do
-        expect(linter_check_object.error_list).to be_a(Array)
-      end
-    end
   end
 
   describe '#important' do
