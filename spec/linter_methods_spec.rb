@@ -1,4 +1,4 @@
-require_relative 'lib/linter_methods'
+require_relative '../lib/linter_methods'
 
 describe LinterCheck do
   let(:linter_check_object) { LinterCheck.new('css/style.css') }
@@ -77,7 +77,7 @@ describe LinterCheck do
   describe '#z_index_size' do
     it 'checks that warning in yellow is issued when z index value is too big' do
       expect(linter_check_object.send(:z_index_size, 'z-index: 999',
-                                      20)).to eql(['z-index should is too big on line 20'.colorize(:yellow)])
+                                      20)).to eql(['z-index is too big on line 20'.colorize(:yellow)])
     end
   end
 

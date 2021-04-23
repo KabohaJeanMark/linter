@@ -56,7 +56,7 @@ class LinterCheck
   def z_index_size(line, num)
     return unless line.include?('z-index') && line.split(':')[1].to_i > 100
 
-    @error_list.push("z-index should is too big on line #{num}".colorize(:yellow))
+    @error_list.push("z-index is too big on line #{num}".colorize(:yellow))
   end
 
   def id_selector(line, num)
