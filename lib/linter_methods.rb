@@ -8,6 +8,31 @@ class LinterCheck
     @file_route = file_route
   end
 
+  def check_methods
+    num = 0
+    File.readlines(@file_route).each do |line|
+      num += 1
+      single_quote(line, num)
+      double_quote(line, num)
+      important(line, num)
+      extra_colons(line, num)
+      z_index(line, num)
+      z_index_size(line, num)
+      id_selector(line, num)
+      pixels(line, num)
+      commented_code(line, num)
+      color_rules(line, num)
+      space_at_line_end(line, num)
+    end
+    if @error_list.length.zero?
+      'All checks have passed. No linter errors'.colorize(:green)
+    else
+      @error_list
+    end
+  end
+
+  private
+
   def important(line, num)
     @error_list.push("!important. Please remove from line #{num}".colorize(:light_red)) if line.include?('!important')
   end
@@ -63,28 +88,5 @@ class LinterCheck
     return unless bare_line.end_with?(' ')
 
     @error_list.push("Empty space detected at end of line #{num}".colorize(:light_red))
-  end
-
-  def check_methods
-    num = 0
-    File.readlines(@file_route).each do |line|
-      num += 1
-      single_quote(line, num)
-      double_quote(line, num)
-      important(line, num)
-      extra_colons(line, num)
-      z_index(line, num)
-      z_index_size(line, num)
-      id_selector(line, num)
-      pixels(line, num)
-      commented_code(line, num)
-      color_rules(line, num)
-      space_at_line_end(line, num)
-    end
-    if @error_list.length.zero?
-      'All checks have passed. No linter errors'.colorize(:green)
-    else
-      @error_list
-    end
   end
 end
